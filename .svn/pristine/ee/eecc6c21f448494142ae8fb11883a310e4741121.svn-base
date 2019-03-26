@@ -1,0 +1,137 @@
+//
+//  PlayerVC.m
+//  AV_Demo
+//
+//  Created by chencheng on 2019/3/13.
+//  Copyright © 2019年 chen. All rights reserved.
+//
+
+#import "PlayerVC.h"
+#import "CCPlayerView.h"
+#import "CCPlayer.h"
+
+@interface PlayerVC ()
+
+@property(nonatomic,strong) CCPlayerView *playerView;
+@property(nonatomic,strong) CCPlayer *player;
+@property(nonatomic,strong) NSURL *fileUrl;
+
+@end
+
+@implementation PlayerVC
+
+#pragma mark - Life cycle
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    // Do any additional setup after loading the view.
+    
+    [self createUI];
+    
+    /*
+     
+     
+     https://blog.csdn.net/weixin_41010198/article/details/88055078#URL_8
+     
+     http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4
+     http://vjs.zencdn.net/v/oceans.mp4
+     
+     MP3:
+     http://www.170mv.com/kw/other.web.nm01.sycdn.kuwo.cn/resource/n1/31/10/1763161771.mp3
+     */
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"Movie.m4v" ofType:nil];
+    self.fileUrl = [NSURL fileURLWithPath:path];
+    
+    NSString *urlString = @"http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4";
+    urlString = [urlString stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
+    self.fileUrl = [NSURL URLWithString:urlString];
+}
+
+- (void)controlsEvent {
+    __weak typeof(self) weakSelf = self;
+    self.playerView.backBtnEventBlock = ^{
+        [weakSelf dismissViewControllerAnimated:YES completion:nil];
+    };
+    self.playerView.playBtnEventBlock = ^{
+        if (weakSelf.player.status == CCPlayerStatusPlaying) {
+            [weakSelf.player pause];
+        }else {
+            [weakSelf.player play];
+        }
+    };
+    self.playerView.progressEventBlock = ^(CGFloat value) {
+        
+    };
+    self.playerView.forwardBtnEventBlock = ^{
+        
+    };
+    self.playerView.backoffBtnEventBlock = ^{
+        
+    };
+    self.playerView.fullScreenBtnEventBlock = ^{
+        
+    };
+    self.playerView.sliderEventBlock = ^(CGFloat value) {
+        
+    };
+}
+
+- (void)playerBlockCallback {
+    __weak typeof(self) weakSelf = self;
+    self.player.playBlock = ^{
+        NSLog(@"开始播放");
+    };
+    self.player.pauseBlock = ^{
+        NSLog(@"暂停播放");
+    };
+    self.player.finishBlock = ^{
+        NSLog(@"播放完成");
+    };
+    self.player.progressBlock = ^(CGFloat progress, CGFloat currentTime, CGFloat totalTime) {
+        NSLog(@"播放进度: %.2f,%.2f,%.2f",progress,currentTime,totalTime);
+        [weakSelf.playerView updatePlayTimeWithCurrentTime:currentTime totalTime:totalTime];
+    };
+    self.player.bufferBlock = ^(CGFloat progress) {
+        NSLog(@"缓冲进度: %.2f",progress);
+    };
+}
+
+- (void)createUI {
+    self.view.backgroundColor = [UIColor whiteColor];
+
+    _playerView = [[CCPlayerView alloc] init];
+    [self.view addSubview:_playerView];
+    CGFloat viewToTop = StateBarAndNavBarHeight;
+    [_playerView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.view).offset(viewToTop);
+        make.left.right.equalTo(self.view);
+        make.height.equalTo(self.view).multipliedBy(0.5f);
+    }];
+    
+    [self controlsEvent];
+}
+
+- (CCPlayer *)player {
+    if (!_player) {
+        [self createCCPlayer];
+    }
+    return _player;
+}
+
+- (void)createCCPlayer {
+    NSLog(@"create ccplayer by %@",self.fileUrl.path);
+//    NSFileManager *fileManager = [NSFileManager defaultManager];
+//    if (![fileManager fileExistsAtPath:self.fileUrl.path]) {
+//        NSLog(@"video file is not exist.");
+//        return;
+//    }
+    
+    _player = [[CCPlayer alloc] initWithURL:self.fileUrl];
+    _player.containerView = self.playerView.containerView;
+    [self playerBlockCallback];
+}
+
+- (void)dealloc {
+    NSLog(@"dealloc: %@",[self class]);
+}
+
+@end

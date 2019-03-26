@@ -1,0 +1,46 @@
+//
+//  CCPlayerHeaderView.m
+//  AV_Demo
+//
+//  Created by chencheng on 2019/3/13.
+//  Copyright © 2019年 chen. All rights reserved.
+//
+
+#import "CCPlayerHeaderView.h"
+
+@implementation CCPlayerHeaderView
+
+- (instancetype)initWithFrame:(CGRect)frame {
+    if (self == [super initWithFrame:frame]) {
+        [self createUI];
+    }
+    return self;
+}
+
+- (void)createUI {
+    self.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.3f];
+    
+    _backBtn = [[UIButton alloc] init];
+    _backBtn.backgroundColor = [UIColor lightGrayColor];
+    [_backBtn setImage:[UIImage imageNamed:@"back"] forState:UIControlStateNormal];
+    [self addSubview:_backBtn];
+    [_backBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self).offset(10.f);
+        make.centerY.equalTo(self);
+        make.width.height.equalTo(self.mas_height).multipliedBy(0.6);
+    }];
+    
+    _titleLbl = [[UILabel alloc] init];
+    _titleLbl.textColor = [UIColor whiteColor];
+    _titleLbl.textAlignment = NSTextAlignmentLeft;
+    [self addSubview:_titleLbl];
+    [_titleLbl mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.backBtn.mas_right).offset(10.f);
+        make.centerY.equalTo(self);
+        make.right.equalTo(self);
+    }];
+    
+    _titleLbl.text = @"外国网友问中国为啥不用拼音做汉字？网友：我发一段你念念";
+}
+
+@end

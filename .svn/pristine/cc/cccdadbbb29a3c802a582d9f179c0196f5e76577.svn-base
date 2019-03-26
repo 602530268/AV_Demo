@@ -1,0 +1,151 @@
+//
+//  CCRecordView.m
+//  AV_Demo
+//
+//  Created by chencheng on 2019/3/19.
+//  Copyright © 2019年 chen. All rights reserved.
+//
+
+#import "CCRecordView.h"
+
+@implementation CCRecordView
+
+- (instancetype)initWithFrame:(CGRect)frame {
+    if (self == [super initWithFrame:frame]) {
+        [self createUI];
+    }
+    return self;
+}
+
+- (void)createUI {
+    CGFloat smallItemSize = 44.f;
+    CGFloat mediumItmeSize = 50.f;
+    CGFloat bigItemSize = 80.f;
+    
+    _containerView = [[UIView alloc] init];
+    [self addSubview:_containerView];
+    [_containerView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(self);
+    }];
+    
+    _backBtn = [self generateBtnWithImageName:@"back" superView:self];
+    [_backBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self);
+        make.left.equalTo(self).offset(8.f);
+        make.width.height.equalTo(@(smallItemSize));
+    }];
+    
+    _functionView = [[UIView alloc] init];
+    [self addSubview:_functionView];
+    [_functionView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self);
+        make.right.equalTo(self).offset(-8.f);
+        make.width.equalTo(@(smallItemSize));
+        make.height.greaterThanOrEqualTo(@0);
+    }];
+    
+    _switchCameraBtn = [self generateBtnWithImageName:@"switch_camera" superView:self.functionView];
+    [_switchCameraBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.left.right.equalTo(self.functionView);
+        make.height.equalTo(self.functionView.mas_width);
+    }];
+
+    _flashLightBtn = [self generateBtnWithImageName:@"flash_light" superView:self.functionView];
+    [_flashLightBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.switchCameraBtn.mas_bottom).offset(8.f);
+        make.left.right.height.equalTo(self.switchCameraBtn);
+    }];
+    
+    _fileterBtn = [self generateBtnWithImageName:@"filter" superView:self.functionView];
+    [_fileterBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.flashLightBtn.mas_bottom).offset(8.f);
+        make.left.right.height.equalTo(self.switchCameraBtn);
+    }];
+    
+    _specialEffectBtn = [self generateBtnWithImageName:@"special_effect" superView:self.functionView];
+    [_specialEffectBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.fileterBtn.mas_bottom).offset(8.f);
+        make.left.right.height.equalTo(self.switchCameraBtn);
+    }];
+    
+    _photoLibraryBtn = [self generateBtnWithImageName:@"photo_library" superView:self.functionView];
+    [_photoLibraryBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.specialEffectBtn.mas_bottom).offset(8.f);
+        make.left.right.height.equalTo(self.switchCameraBtn);
+        make.bottom.equalTo(self.functionView);
+    }];
+    
+    _recordBtn = [self generateBtnWithImageName:nil superView:self];
+    CGFloat recordBtnSize = bigItemSize;
+    _recordBtn.layer.cornerRadius = recordBtnSize / 2.f;
+    _recordBtn.layer.borderColor = [UIColor blackColor].CGColor;
+    _recordBtn.layer.borderWidth = 3.f;
+    [_recordBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.equalTo(self);
+        make.width.height.equalTo(@(recordBtnSize));
+        make.bottom.equalTo(self).offset(-80.f);
+    }];
+    
+    _rollbackBtn = [self generateBtnWithImageName:@"rollback" superView:self];
+    [_rollbackBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.equalTo(self.recordBtn.mas_left).offset(-40.f);
+        make.centerY.equalTo(self.recordBtn);
+        make.width.height.equalTo(@(mediumItmeSize));
+    }];
+    
+    _finishBtn = [self generateBtnWithImageName:@"finish" superView:self];
+    [_finishBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.recordBtn.mas_right).offset(40.f);
+        make.centerY.equalTo(self.recordBtn);
+        make.width.height.equalTo(@(mediumItmeSize));
+    }];
+    
+    [self controlsEvent];
+}
+
+- (void)controlsEvent {
+    __weak typeof(self) weakSelf = self;
+    [[self.backBtn rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+        if (weakSelf.backBtnEventBlock) weakSelf.backBtnEventBlock();
+    }];
+    [[self.switchCameraBtn rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+        if (weakSelf.switchCameraBtnEventBlock) weakSelf.switchCameraBtnEventBlock();
+    }];
+    [[self.flashLightBtn rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+        if (weakSelf.flashLightBtnEventBlock) weakSelf.flashLightBtnEventBlock();
+    }];
+    [[self.fileterBtn rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+        if (weakSelf.fileterBtnEventBlock) weakSelf.fileterBtnEventBlock();
+    }];
+    [[self.specialEffectBtn rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+        if (weakSelf.specialEffectBtnEventBlock) weakSelf.specialEffectBtnEventBlock();
+    }];
+    [[self.photoLibraryBtn rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+        if (weakSelf.photoLibraryBtnEventBlock) weakSelf.photoLibraryBtnEventBlock();
+    }];
+    [[self.rollbackBtn rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+        if (weakSelf.rollbackBtnEventBlock) weakSelf.rollbackBtnEventBlock();
+    }];
+    [[self.recordBtn rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+        if (weakSelf.recordBtnEventBlock) weakSelf.recordBtnEventBlock();
+    }];
+    [[self.finishBtn rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+        if (weakSelf.finishBtnEventBlock) weakSelf.finishBtnEventBlock();
+    }];
+}
+
+- (UIButton *)generateBtnWithImageName:(NSString *)imageName superView:(UIView *)superView {
+    UIButton *btn = [[UIButton alloc] init];
+    if (imageName) {
+        [btn setImage:[UIImage imageNamed:imageName] forState:UIControlStateNormal];
+    }
+    [superView addSubview:btn];
+    return btn;
+}
+
+#pragma mark - dealloc
+- (void)dealloc {
+    NSLog(@"dealloc: %@",[self class]);
+}
+
+@end

@@ -1,0 +1,93 @@
+//
+//  VideoEditVC.m
+//  AV_Demo
+//
+//  Created by chencheng on 2019/3/21.
+//  Copyright © 2019年 chen. All rights reserved.
+//
+
+#import "VideoEditVC.h"
+#import "CCPlayerView.h"
+#import "CCPlayer.h"
+#import "CCEditView.h"
+
+@interface VideoEditVC ()
+
+@property(nonatomic,strong) CCEditView *editView;
+@property(nonatomic,strong) CCPlayer *player;
+
+@end
+
+@implementation VideoEditVC
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    // Do any additional setup after loading the view.
+    
+    self.view.backgroundColor = [UIColor whiteColor];
+    
+    if (!self.fileURL) {
+        NSString *path = [[NSBundle mainBundle] pathForResource:@"陶喆-寂寞的季节.mp4" ofType:nil];
+        self.fileURL = [NSURL fileURLWithPath:path];
+    }
+    
+    _editView = [[CCEditView alloc] init];
+    [self.view addSubview:_editView];
+    [_editView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.mas_equalTo(UIEdgeInsetsMake(StateBarAndNavBarHeight, 0, 0, 0));
+    }];
+    
+    _player = [[CCPlayer alloc] initWithURL:self.fileURL];
+    _player.containerView = _editView.containerView;
+    
+    [self editViewBlockCallback];
+    [self playerBlockCallback];
+}
+
+#pragma mark - Player BLock
+- (void)playerBlockCallback {
+//    __weak typeof(self) weakSelf = self;
+    self.player.playBlock = ^{
+        NSLog(@"开始播放");
+    };
+    self.player.pauseBlock = ^{
+        NSLog(@"暂停播放");
+    };
+    self.player.finishBlock = ^{
+        NSLog(@"播放完成");
+    };
+}
+
+#pragma mark - PlayerView Event Block
+- (void)editViewBlockCallback {
+    __weak typeof(self) weakSelf = self;
+    self.editView.backBtnEventBlock = ^{
+        [weakSelf dismissViewControllerAnimated:YES completion:nil];
+    };
+    self.editView.playBtnEventBlock = ^{
+        [weakSelf.player playOrPause];
+    };
+    self.editView.rollbackBtnEventBlock = ^{
+        
+    };
+    self.editView.finishBtnEventBlock = ^{
+
+    };
+    self.editView.trimBtnEventBlock = ^{
+        
+    };
+    self.editView.cropBtnEventBlock = ^{
+        
+    };
+    self.editView.addMusicBtnEventBlock = ^{
+        
+    };
+    self.editView.waterMarkBtnEventBlock = ^{
+        
+    };
+    self.editView.exportBtnEventBlock = ^{
+        
+    };
+}
+
+@end

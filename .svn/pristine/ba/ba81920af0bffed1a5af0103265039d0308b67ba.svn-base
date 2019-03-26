@@ -1,0 +1,124 @@
+//
+//  CCPlayerView.m
+//  AV_Demo
+//
+//  Created by chencheng on 2019/3/13.
+//  Copyright © 2019年 chen. All rights reserved.
+//
+
+#import "CCPlayerView.h"
+
+@implementation CCPlayerView
+
+#pragma mark - APIs (public)
+- (void)updatePlayTimeWithCurrentTime:(CGFloat)currentTime totalTime:(CGFloat)totalTime {
+    int currentMin = [self convertToMinuteWith:currentTime];
+    int currentSeconds = [self convertToSecondsWith:currentTime];
+    int totalMin = [self convertToMinuteWith:totalTime];
+    int totalSeconds = [self convertToSecondsWith:totalTime];
+    NSString *timeString = [NSString stringWithFormat:@"%02d:%02d/%02d:%02d",currentMin,currentSeconds,totalMin,totalSeconds];
+    self.footerView.timeLbl.text = timeString;
+}
+
+- (int)convertToMinuteWith:(CGFloat)time {
+    return time / 60;
+}
+- (int)convertToSecondsWith:(CGFloat)time {
+    int seconds = (int)time;
+    return seconds % 60;
+}
+
+#pragma mark - UI
+- (instancetype)initWithFrame:(CGRect)frame {
+    if (self == [super initWithFrame:frame]) {
+        [self createUI];
+    }
+    return self;
+}
+
+- (void)createUI {
+    _containerView = [[UIView alloc] init];
+    _containerView.backgroundColor = [UIColor grayColor];
+    [self addSubview:_containerView];
+    [_containerView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(self);
+    }];
+    
+    _headerView = [[CCPlayerHeaderView alloc] init];
+    [self addSubview:_headerView];
+    [_headerView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.left.right.equalTo(self);
+        make.height.equalTo(@(50.f));
+    }];
+    
+    _footerView = [[CCPlayerFooterView alloc] init];
+    [self addSubview:_footerView];
+    [_footerView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.bottom.equalTo(self);
+        make.height.equalTo(@(60.f));
+    }];
+    
+    [self controlsEvent];
+}
+
+#pragma mark - Event
+- (void)controlsEvent {
+    __weak typeof(self) weakSelf = self;
+    
+    //返回按钮
+    [[self.headerView.backBtn rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+        if (weakSelf.backBtnEventBlock) {
+            weakSelf.backBtnEventBlock();
+        }
+    }];
+    
+    //双击播放页面
+    UITapGestureRecognizer *doubleTap = [[UITapGestureRecognizer alloc] init];
+    doubleTap.numberOfTapsRequired = 2;
+    self.containerView.userInteractionEnabled = YES;
+    [self.containerView addGestureRecognizer:doubleTap];
+    [[doubleTap rac_gestureSignal] subscribeNext:^(id x) {
+        NSLog(@"double tap");
+    }];
+    
+    //点击播放按钮
+    [[self.footerView.playBtn rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+        weakSelf.footerView.playBtn.selected = !weakSelf.footerView.playBtn.selected;
+        if (weakSelf.playBtnEventBlock) {
+            weakSelf.playBtnEventBlock();
+        }
+    }];
+    
+    //拖动进度
+    
+    //前进几秒
+    [[self.footerView.forwardBtn rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+        if (weakSelf.forwardBtnEventBlock) {
+            weakSelf.forwardBtnEventBlock();
+        }
+    }];
+    
+    //后退几秒
+    [[self.footerView.backoffBtn rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+        if (weakSelf.backoffBtnEventBlock) {
+            weakSelf.backoffBtnEventBlock();
+        }
+    }];
+    
+    //全屏按钮
+    [[self.footerView.fullScreenBtn rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+        if (weakSelf.fullScreenBtnEventBlock) {
+            weakSelf.fullScreenBtnEventBlock();
+        }
+    }];
+    
+    //拖动进度后松开
+    [[self.footerView.slider rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+        CGFloat value = [[x valueForKey:@"value"] floatValue];
+        if (weakSelf.sliderEventBlock) {
+            weakSelf.sliderEventBlock(value);
+        }
+    }];
+}
+
+@end

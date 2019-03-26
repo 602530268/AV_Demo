@@ -1,0 +1,33 @@
+//
+//  AV_Demo.pch
+//  AV_Demo
+//
+//  Created by chencheng on 2019/3/13.
+//  Copyright © 2019年 chen. All rights reserved.
+//
+
+#ifndef AV_Demo_pch
+#define AV_Demo_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+#import <Masonry.h>
+#import <GPUImage.h>
+#import <SVProgressHUD.h>
+#import <AFNetworking.h>
+#import <ReactiveCocoa.h>
+
+#define BaseColor [UIColor colorWithRed:17.f/255.f green:107.f/255.f blue:52.f/255.f alpha:1.f]   //基本色调
+#define COLOR(RED,GREEN,BLUE,ALPHA) [UIColor colorWithRed:RED/255.0f green:GREEN/255.0 blue:BLUE/255.0 alpha:ALPHA]
+
+#define StateBarHeight [[UIApplication sharedApplication] statusBarFrame].size.height   //状态栏高度
+#define NavBarHeight self.navigationController.navigationBar.frame.size.height  //导航栏高度
+#define StateBarAndNavBarHeight (StateBarHeight + NavBarHeight) //状态栏加导航栏
+#define ScreenViewHeight (SCREEN_HEIGHT - StateBarAndNavBarHeight)  //除去状态栏和导航栏后的高度
+#define TabBarHeight self.tabBarController.tabBar.bounds.size.height   //tabBar标签栏高度
+
+#define IPHONE_X_LATER (is_IPHONEX ? 34 : 0)
+
+#endif /* AV_Demo_pch */
+

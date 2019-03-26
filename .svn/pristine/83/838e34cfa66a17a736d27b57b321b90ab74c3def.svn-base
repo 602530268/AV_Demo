@@ -1,0 +1,64 @@
+//
+//  CCPlayer.h
+//  AV_Demo
+//
+//  Created by chencheng on 2019/3/13.
+//  Copyright © 2019年 chen. All rights reserved.
+//
+
+#import <Foundation/Foundation.h>
+#import <AVFoundation/AVFoundation.h>
+#import <UIKit/UIKit.h>
+
+typedef NS_ENUM(NSInteger, CCPlayerStatus) {
+    CCPlayerStatusDidNotPlay,   //未播放
+    CCPlayerStatusPlaying,  //正在播放
+    CCPlayerStatusPause,    //暂停
+    CCPlayerStatusFinish,   //播放完成
+};
+
+typedef void(^MidiaTotalTime)(void); //视频总长度回调
+typedef void(^PLayCallback)(void);  //播放回调
+typedef void(^PauseCallback)(void); //暂停回调
+typedef void(^FinishCallback)(void);    //播放完成回调
+typedef void(^ProgressCallback)(CGFloat progress, CGFloat currentTime, CGFloat totalTime);  //播放进度回调
+typedef void(^BufferCallback)(CGFloat progress);    //缓冲进度回调，在新建对象后就已经开始缓存了
+
+@interface CCPlayer : NSObject
+
+- (instancetype)initWithPath:(NSString *)path;
+- (instancetype)initWithUrlString:(NSString *)urlString;
+- (instancetype)initWithURL:(NSURL *)url;
+
+@property(nonatomic,assign) CCPlayerStatus status;
+@property(nonatomic,strong) NSURL *fileUrl;
+@property(nonatomic,strong) UIView *containerView; //视频承载view
+@property(nonatomic,assign) AVLayerVideoGravity videoGravity;
+
+#pragma mark - block callback
+@property(nonatomic,copy) PLayCallback playBlock;
+@property(nonatomic,copy) PauseCallback pauseBlock;
+@property(nonatomic,copy) FinishCallback finishBlock;
+@property(nonatomic,copy) ProgressCallback progressBlock;
+@property(nonatomic,copy) BufferCallback bufferBlock;
+
+//播放or暂停
+- (void)playOrPause;
+
+//播放
+- (void)play;
+
+//暂停
+- (void)pause;
+
+//缓存
+- (void)buffer;
+
+//跳转进度
+- (void)jumpProgressBySeconds:(CGFloat)value;    //间隔为秒
+- (void)jumpProgressByTime:(CGFloat)value;  //指定时间，可以精确到帧
+
+//更新playerLayer的frame。当containerView的约束发生变化时，调用该函数
+- (void)updatePlayerLayerFrame;
+
+@end

@@ -1,0 +1,943 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		351DE7CE2238AFEF007C29EE /* CCPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 351DE7CD2238AFEF007C29EE /* CCPlayer.m */; };
+		351DE7D22238CF0C007C29EE /* music.wav in Resources */ = {isa = PBXBuildFile; fileRef = 351DE7D02238CF0C007C29EE /* music.wav */; };
+		351DE7D32238CF0C007C29EE /* Movie.m4v in Resources */ = {isa = PBXBuildFile; fileRef = 351DE7D12238CF0C007C29EE /* Movie.m4v */; };
+		351DE7E12238E0E3007C29EE /* PlayerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 351DE7E02238E0E3007C29EE /* PlayerVC.m */; };
+		351DE7E42238E395007C29EE /* CCPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 351DE7E32238E395007C29EE /* CCPlayerView.m */; };
+		351DE7EB2238E7CD007C29EE /* CCPlayerHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 351DE7EA2238E7CD007C29EE /* CCPlayerHeaderView.m */; };
+		351DE7EE2238E7ED007C29EE /* CCPlayerFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 351DE7ED2238E7ED007C29EE /* CCPlayerFooterView.m */; };
+		3525350C223B69E700AD0FD5 /* 陶喆-寂寞的季节.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 3525350B223B69E700AD0FD5 /* 陶喆-寂寞的季节.mp4 */; };
+		3525350E223B69FB00AD0FD5 /* 陈奕迅-单车.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3525350D223B69FA00AD0FD5 /* 陈奕迅-单车.mp3 */; };
+		35253518224090AE00AD0FD5 /* CCRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 35253517224090AE00AD0FD5 /* CCRecord.m */; };
+		3525351B2240911E00AD0FD5 /* CCRecordTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 3525351A2240911E00AD0FD5 /* CCRecordTool.m */; };
+		352535212240A90400AD0FD5 /* CCRecordFileOutput.m in Sources */ = {isa = PBXBuildFile; fileRef = 352535202240A90400AD0FD5 /* CCRecordFileOutput.m */; };
+		352535242240B42600AD0FD5 /* CCRecordAssetWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 352535232240B42600AD0FD5 /* CCRecordAssetWriter.m */; };
+		352535272240C27500AD0FD5 /* RecordBaseUIViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 352535262240C27400AD0FD5 /* RecordBaseUIViewController.m */; };
+		3525352A2240C28A00AD0FD5 /* RecordByFileOutputVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 352535292240C28A00AD0FD5 /* RecordByFileOutputVC.m */; };
+		3525352D2240C67E00AD0FD5 /* RecordByAssetWriterVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3525352C2240C67E00AD0FD5 /* RecordByAssetWriterVC.m */; };
+		352535302240DD7B00AD0FD5 /* CCRecordView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3525352F2240DD7B00AD0FD5 /* CCRecordView.m */; };
+		352535382241024A00AD0FD5 /* MediaListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 352535372241024A00AD0FD5 /* MediaListVC.m */; };
+		3555D5FA2243272A006A1448 /* VideoEditVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3555D5F92243272A006A1448 /* VideoEditVC.m */; };
+		3555D5FE224345D0006A1448 /* CCEditView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3555D5FD224345D0006A1448 /* CCEditView.m */; };
+		3555D6012243A1B0006A1448 /* BaseCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = 3555D6002243A1B0006A1448 /* BaseCommon.m */; };
+		3557CFC32237DE9F004F141C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3557CFC22237DE9F004F141C /* AppDelegate.m */; };
+		3557CFC62237DE9F004F141C /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3557CFC52237DE9F004F141C /* ViewController.m */; };
+		3557CFC92237DE9F004F141C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3557CFC72237DE9F004F141C /* Main.storyboard */; };
+		3557CFCB2237DEA1004F141C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3557CFCA2237DEA1004F141C /* Assets.xcassets */; };
+		3557CFCE2237DEA1004F141C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3557CFCC2237DEA1004F141C /* LaunchScreen.storyboard */; };
+		3557CFD12237DEA1004F141C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3557CFD02237DEA1004F141C /* main.m */; };
+		3557CFDB2237DEA1004F141C /* AV_DemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3557CFDA2237DEA1004F141C /* AV_DemoTests.m */; };
+		3557CFE62237DEA1004F141C /* AV_DemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3557CFE52237DEA1004F141C /* AV_DemoUITests.m */; };
+		3599E6A42243CDDB005D4511 /* CCEditTrimView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3599E6A32243CDDB005D4511 /* CCEditTrimView.m */; };
+		3599E6A6224498BB005D4511 /* 1553228080917688.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 3599E6A5224498BB005D4511 /* 1553228080917688.mp4 */; };
+		3599E6AA2244C08B005D4511 /* CCAVCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 3599E6A92244C08B005D4511 /* CCAVCommand.m */; };
+		3599E6AD2244C3DC005D4511 /* CCAVTrimCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 3599E6AC2244C3DC005D4511 /* CCAVTrimCommand.m */; };
+		3599E6AF2244E473005D4511 /* qq.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 3599E6AE2244E472005D4511 /* qq.mp4 */; };
+		3599E6B222487255005D4511 /* CCAVCropCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 3599E6B122487255005D4511 /* CCAVCropCommand.m */; };
+		3599E6B52248AE3E005D4511 /* CCAVRotateCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 3599E6B42248AE3E005D4511 /* CCAVRotateCommand.m */; };
+		3599E6B82248B28B005D4511 /* CCAVAddMusicCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 3599E6B72248B28B005D4511 /* CCAVAddMusicCommand.m */; };
+		3599E6BB2248B7D9005D4511 /* CCAVAddWaterMarkCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 3599E6BA2248B7D9005D4511 /* CCAVAddWaterMarkCommand.m */; };
+		3599E6C02249D5EA005D4511 /* CCAVExportCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 3599E6BF2249D5EA005D4511 /* CCAVExportCommand.m */; };
+		3599E6C42249E99F005D4511 /* CCAlterController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3599E6C32249E99F005D4511 /* CCAlterController.m */; };
+		3599E6C7224A0162005D4511 /* CCAVTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 3599E6C6224A0162005D4511 /* CCAVTool.m */; };
+		3599E6CB224A05CF005D4511 /* SVProgressHUD+CCAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = 3599E6C9224A05CF005D4511 /* SVProgressHUD+CCAdd.m */; };
+		471ACAD907214E884EDF58C5 /* libPods-AV_Demo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 91B7C41B0A9CD86E35C18787 /* libPods-AV_Demo.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		3557CFD72237DEA1004F141C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3557CFB62237DE9F004F141C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3557CFBD2237DE9F004F141C;
+			remoteInfo = AV_Demo;
+		};
+		3557CFE22237DEA1004F141C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3557CFB62237DE9F004F141C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3557CFBD2237DE9F004F141C;
+			remoteInfo = AV_Demo;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		351DE7CC2238AFEF007C29EE /* CCPlayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCPlayer.h; sourceTree = "<group>"; };
+		351DE7CD2238AFEF007C29EE /* CCPlayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CCPlayer.m; sourceTree = "<group>"; };
+		351DE7D02238CF0C007C29EE /* music.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = music.wav; sourceTree = "<group>"; };
+		351DE7D12238CF0C007C29EE /* Movie.m4v */ = {isa = PBXFileReference; lastKnownFileType = file; path = Movie.m4v; sourceTree = "<group>"; };
+		351DE7D42238DCD9007C29EE /* AV_Demo.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AV_Demo.pch; sourceTree = "<group>"; };
+		351DE7DF2238E0E3007C29EE /* PlayerVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlayerVC.h; sourceTree = "<group>"; };
+		351DE7E02238E0E3007C29EE /* PlayerVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlayerVC.m; sourceTree = "<group>"; };
+		351DE7E22238E395007C29EE /* CCPlayerView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCPlayerView.h; sourceTree = "<group>"; };
+		351DE7E32238E395007C29EE /* CCPlayerView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CCPlayerView.m; sourceTree = "<group>"; };
+		351DE7E92238E7CD007C29EE /* CCPlayerHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCPlayerHeaderView.h; sourceTree = "<group>"; };
+		351DE7EA2238E7CD007C29EE /* CCPlayerHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CCPlayerHeaderView.m; sourceTree = "<group>"; };
+		351DE7EC2238E7ED007C29EE /* CCPlayerFooterView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCPlayerFooterView.h; sourceTree = "<group>"; };
+		351DE7ED2238E7ED007C29EE /* CCPlayerFooterView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CCPlayerFooterView.m; sourceTree = "<group>"; };
+		3525350B223B69E700AD0FD5 /* 陶喆-寂寞的季节.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "陶喆-寂寞的季节.mp4"; sourceTree = "<group>"; };
+		3525350D223B69FA00AD0FD5 /* 陈奕迅-单车.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "陈奕迅-单车.mp3"; sourceTree = "<group>"; };
+		35253516224090AE00AD0FD5 /* CCRecord.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCRecord.h; sourceTree = "<group>"; };
+		35253517224090AE00AD0FD5 /* CCRecord.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CCRecord.m; sourceTree = "<group>"; };
+		352535192240911E00AD0FD5 /* CCRecordTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCRecordTool.h; sourceTree = "<group>"; };
+		3525351A2240911E00AD0FD5 /* CCRecordTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CCRecordTool.m; sourceTree = "<group>"; };
+		3525351F2240A90400AD0FD5 /* CCRecordFileOutput.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCRecordFileOutput.h; sourceTree = "<group>"; };
+		352535202240A90400AD0FD5 /* CCRecordFileOutput.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CCRecordFileOutput.m; sourceTree = "<group>"; };
+		352535222240B42600AD0FD5 /* CCRecordAssetWriter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCRecordAssetWriter.h; sourceTree = "<group>"; };
+		352535232240B42600AD0FD5 /* CCRecordAssetWriter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CCRecordAssetWriter.m; sourceTree = "<group>"; };
+		352535252240C27400AD0FD5 /* RecordBaseUIViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RecordBaseUIViewController.h; sourceTree = "<group>"; };
+		352535262240C27400AD0FD5 /* RecordBaseUIViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RecordBaseUIViewController.m; sourceTree = "<group>"; };
+		352535282240C28A00AD0FD5 /* RecordByFileOutputVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RecordByFileOutputVC.h; sourceTree = "<group>"; };
+		352535292240C28A00AD0FD5 /* RecordByFileOutputVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RecordByFileOutputVC.m; sourceTree = "<group>"; };
+		3525352B2240C67E00AD0FD5 /* RecordByAssetWriterVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RecordByAssetWriterVC.h; sourceTree = "<group>"; };
+		3525352C2240C67E00AD0FD5 /* RecordByAssetWriterVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RecordByAssetWriterVC.m; sourceTree = "<group>"; };
+		3525352E2240DD7B00AD0FD5 /* CCRecordView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCRecordView.h; sourceTree = "<group>"; };
+		3525352F2240DD7B00AD0FD5 /* CCRecordView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CCRecordView.m; sourceTree = "<group>"; };
+		352535362241024A00AD0FD5 /* MediaListVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MediaListVC.h; sourceTree = "<group>"; };
+		352535372241024A00AD0FD5 /* MediaListVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MediaListVC.m; sourceTree = "<group>"; };
+		3555D5F82243272A006A1448 /* VideoEditVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VideoEditVC.h; sourceTree = "<group>"; };
+		3555D5F92243272A006A1448 /* VideoEditVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VideoEditVC.m; sourceTree = "<group>"; };
+		3555D5FC224345D0006A1448 /* CCEditView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCEditView.h; sourceTree = "<group>"; };
+		3555D5FD224345D0006A1448 /* CCEditView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CCEditView.m; sourceTree = "<group>"; };
+		3555D5FF2243A1B0006A1448 /* BaseCommon.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseCommon.h; sourceTree = "<group>"; };
+		3555D6002243A1B0006A1448 /* BaseCommon.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseCommon.m; sourceTree = "<group>"; };
+		3557CFBE2237DE9F004F141C /* AV_Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AV_Demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3557CFC12237DE9F004F141C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		3557CFC22237DE9F004F141C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		3557CFC42237DE9F004F141C /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		3557CFC52237DE9F004F141C /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		3557CFC82237DE9F004F141C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		3557CFCA2237DEA1004F141C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		3557CFCD2237DEA1004F141C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		3557CFCF2237DEA1004F141C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3557CFD02237DEA1004F141C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		3557CFD62237DEA1004F141C /* AV_DemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AV_DemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3557CFDA2237DEA1004F141C /* AV_DemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AV_DemoTests.m; sourceTree = "<group>"; };
+		3557CFDC2237DEA1004F141C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3557CFE12237DEA1004F141C /* AV_DemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AV_DemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3557CFE52237DEA1004F141C /* AV_DemoUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AV_DemoUITests.m; sourceTree = "<group>"; };
+		3557CFE72237DEA1004F141C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3599E6A22243CDDB005D4511 /* CCEditTrimView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCEditTrimView.h; sourceTree = "<group>"; };
+		3599E6A32243CDDB005D4511 /* CCEditTrimView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CCEditTrimView.m; sourceTree = "<group>"; };
+		3599E6A5224498BB005D4511 /* 1553228080917688.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = 1553228080917688.mp4; sourceTree = "<group>"; };
+		3599E6A82244C08B005D4511 /* CCAVCommand.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCAVCommand.h; sourceTree = "<group>"; };
+		3599E6A92244C08B005D4511 /* CCAVCommand.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CCAVCommand.m; sourceTree = "<group>"; };
+		3599E6AB2244C3DC005D4511 /* CCAVTrimCommand.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCAVTrimCommand.h; sourceTree = "<group>"; };
+		3599E6AC2244C3DC005D4511 /* CCAVTrimCommand.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CCAVTrimCommand.m; sourceTree = "<group>"; };
+		3599E6AE2244E472005D4511 /* qq.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = qq.mp4; sourceTree = "<group>"; };
+		3599E6B022487255005D4511 /* CCAVCropCommand.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCAVCropCommand.h; sourceTree = "<group>"; };
+		3599E6B122487255005D4511 /* CCAVCropCommand.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CCAVCropCommand.m; sourceTree = "<group>"; };
+		3599E6B32248AE3E005D4511 /* CCAVRotateCommand.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCAVRotateCommand.h; sourceTree = "<group>"; };
+		3599E6B42248AE3E005D4511 /* CCAVRotateCommand.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CCAVRotateCommand.m; sourceTree = "<group>"; };
+		3599E6B62248B28B005D4511 /* CCAVAddMusicCommand.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCAVAddMusicCommand.h; sourceTree = "<group>"; };
+		3599E6B72248B28B005D4511 /* CCAVAddMusicCommand.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CCAVAddMusicCommand.m; sourceTree = "<group>"; };
+		3599E6B92248B7D9005D4511 /* CCAVAddWaterMarkCommand.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCAVAddWaterMarkCommand.h; sourceTree = "<group>"; };
+		3599E6BA2248B7D9005D4511 /* CCAVAddWaterMarkCommand.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CCAVAddWaterMarkCommand.m; sourceTree = "<group>"; };
+		3599E6BE2249D5EA005D4511 /* CCAVExportCommand.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCAVExportCommand.h; sourceTree = "<group>"; };
+		3599E6BF2249D5EA005D4511 /* CCAVExportCommand.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CCAVExportCommand.m; sourceTree = "<group>"; };
+		3599E6C22249E99F005D4511 /* CCAlterController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCAlterController.h; sourceTree = "<group>"; };
+		3599E6C32249E99F005D4511 /* CCAlterController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CCAlterController.m; sourceTree = "<group>"; };
+		3599E6C5224A0162005D4511 /* CCAVTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCAVTool.h; sourceTree = "<group>"; };
+		3599E6C6224A0162005D4511 /* CCAVTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CCAVTool.m; sourceTree = "<group>"; };
+		3599E6C9224A05CF005D4511 /* SVProgressHUD+CCAdd.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SVProgressHUD+CCAdd.m"; sourceTree = "<group>"; };
+		3599E6CA224A05CF005D4511 /* SVProgressHUD+CCAdd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SVProgressHUD+CCAdd.h"; sourceTree = "<group>"; };
+		86A8312219C72F8751ECA39B /* Pods-AV_Demo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AV_Demo.release.xcconfig"; path = "Target Support Files/Pods-AV_Demo/Pods-AV_Demo.release.xcconfig"; sourceTree = "<group>"; };
+		91B7C41B0A9CD86E35C18787 /* libPods-AV_Demo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AV_Demo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C757717EEC8988DA0407384F /* Pods-AV_Demo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AV_Demo.debug.xcconfig"; path = "Target Support Files/Pods-AV_Demo/Pods-AV_Demo.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		3557CFBB2237DE9F004F141C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				471ACAD907214E884EDF58C5 /* libPods-AV_Demo.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3557CFD32237DEA1004F141C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3557CFDE2237DEA1004F141C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		351DE7CF2238CF0C007C29EE /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				3599E6A5224498BB005D4511 /* 1553228080917688.mp4 */,
+				3599E6AE2244E472005D4511 /* qq.mp4 */,
+				351DE7D02238CF0C007C29EE /* music.wav */,
+				351DE7D12238CF0C007C29EE /* Movie.m4v */,
+				3525350B223B69E700AD0FD5 /* 陶喆-寂寞的季节.mp4 */,
+				3525350D223B69FA00AD0FD5 /* 陈奕迅-单车.mp3 */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		351DE7DE2238E0C2007C29EE /* CCAVKit */ = {
+			isa = PBXGroup;
+			children = (
+				35253515224090A400AD0FD5 /* CCRecord */,
+				351DE7CC2238AFEF007C29EE /* CCPlayer.h */,
+				351DE7CD2238AFEF007C29EE /* CCPlayer.m */,
+			);
+			path = CCAVKit;
+			sourceTree = "<group>";
+		};
+		351DE7E52238E398007C29EE /* CCPlayerView */ = {
+			isa = PBXGroup;
+			children = (
+				351DE7E22238E395007C29EE /* CCPlayerView.h */,
+				351DE7E32238E395007C29EE /* CCPlayerView.m */,
+				351DE7E92238E7CD007C29EE /* CCPlayerHeaderView.h */,
+				351DE7EA2238E7CD007C29EE /* CCPlayerHeaderView.m */,
+				351DE7EC2238E7ED007C29EE /* CCPlayerFooterView.h */,
+				351DE7ED2238E7ED007C29EE /* CCPlayerFooterView.m */,
+			);
+			path = CCPlayerView;
+			sourceTree = "<group>";
+		};
+		35253515224090A400AD0FD5 /* CCRecord */ = {
+			isa = PBXGroup;
+			children = (
+				35253516224090AE00AD0FD5 /* CCRecord.h */,
+				35253517224090AE00AD0FD5 /* CCRecord.m */,
+				3525351F2240A90400AD0FD5 /* CCRecordFileOutput.h */,
+				352535202240A90400AD0FD5 /* CCRecordFileOutput.m */,
+				352535222240B42600AD0FD5 /* CCRecordAssetWriter.h */,
+				352535232240B42600AD0FD5 /* CCRecordAssetWriter.m */,
+				352535192240911E00AD0FD5 /* CCRecordTool.h */,
+				3525351A2240911E00AD0FD5 /* CCRecordTool.m */,
+			);
+			path = CCRecord;
+			sourceTree = "<group>";
+		};
+		352535312240E4AA00AD0FD5 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				351DE7E52238E398007C29EE /* CCPlayerView */,
+				352535322240E4AF00AD0FD5 /* CCRecordView */,
+				3555D5FB224345BE006A1448 /* CCEditView */,
+				3599E6A22243CDDB005D4511 /* CCEditTrimView.h */,
+				3599E6A32243CDDB005D4511 /* CCEditTrimView.m */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		352535322240E4AF00AD0FD5 /* CCRecordView */ = {
+			isa = PBXGroup;
+			children = (
+				3525352E2240DD7B00AD0FD5 /* CCRecordView.h */,
+				3525352F2240DD7B00AD0FD5 /* CCRecordView.m */,
+			);
+			path = CCRecordView;
+			sourceTree = "<group>";
+		};
+		3555D5FB224345BE006A1448 /* CCEditView */ = {
+			isa = PBXGroup;
+			children = (
+				3555D5FC224345D0006A1448 /* CCEditView.h */,
+				3555D5FD224345D0006A1448 /* CCEditView.m */,
+			);
+			path = CCEditView;
+			sourceTree = "<group>";
+		};
+		3557CFB52237DE9F004F141C = {
+			isa = PBXGroup;
+			children = (
+				3557CFC02237DE9F004F141C /* AV_Demo */,
+				3557CFD92237DEA1004F141C /* AV_DemoTests */,
+				3557CFE42237DEA1004F141C /* AV_DemoUITests */,
+				3557CFBF2237DE9F004F141C /* Products */,
+				50B9310E6FC6494AE48034C8 /* Pods */,
+				E7A73633FDB23C2826EC51DC /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		3557CFBF2237DE9F004F141C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3557CFBE2237DE9F004F141C /* AV_Demo.app */,
+				3557CFD62237DEA1004F141C /* AV_DemoTests.xctest */,
+				3557CFE12237DEA1004F141C /* AV_DemoUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		3557CFC02237DE9F004F141C /* AV_Demo */ = {
+			isa = PBXGroup;
+			children = (
+				3557CFC12237DE9F004F141C /* AppDelegate.h */,
+				3557CFC22237DE9F004F141C /* AppDelegate.m */,
+				3557CFC42237DE9F004F141C /* ViewController.h */,
+				3557CFC52237DE9F004F141C /* ViewController.m */,
+				3555D5FF2243A1B0006A1448 /* BaseCommon.h */,
+				3555D6002243A1B0006A1448 /* BaseCommon.m */,
+				351DE7DF2238E0E3007C29EE /* PlayerVC.h */,
+				351DE7E02238E0E3007C29EE /* PlayerVC.m */,
+				3555D5F82243272A006A1448 /* VideoEditVC.h */,
+				3555D5F92243272A006A1448 /* VideoEditVC.m */,
+				3599E6C22249E99F005D4511 /* CCAlterController.h */,
+				3599E6C32249E99F005D4511 /* CCAlterController.m */,
+				3599E6C8224A05CF005D4511 /* SVProgressHUD+CCAdd */,
+				3599E6C12249E7C7005D4511 /* RecordVC */,
+				352535362241024A00AD0FD5 /* MediaListVC.h */,
+				352535372241024A00AD0FD5 /* MediaListVC.m */,
+				3599E6A72244C07E005D4511 /* CCAVTools */,
+				352535312240E4AA00AD0FD5 /* UI */,
+				351DE7DE2238E0C2007C29EE /* CCAVKit */,
+				351DE7CF2238CF0C007C29EE /* Resources */,
+				3557CFC72237DE9F004F141C /* Main.storyboard */,
+				3557CFCA2237DEA1004F141C /* Assets.xcassets */,
+				3557CFCC2237DEA1004F141C /* LaunchScreen.storyboard */,
+				3557CFCF2237DEA1004F141C /* Info.plist */,
+				3557CFD02237DEA1004F141C /* main.m */,
+				351DE7D42238DCD9007C29EE /* AV_Demo.pch */,
+			);
+			path = AV_Demo;
+			sourceTree = "<group>";
+		};
+		3557CFD92237DEA1004F141C /* AV_DemoTests */ = {
+			isa = PBXGroup;
+			children = (
+				3557CFDA2237DEA1004F141C /* AV_DemoTests.m */,
+				3557CFDC2237DEA1004F141C /* Info.plist */,
+			);
+			path = AV_DemoTests;
+			sourceTree = "<group>";
+		};
+		3557CFE42237DEA1004F141C /* AV_DemoUITests */ = {
+			isa = PBXGroup;
+			children = (
+				3557CFE52237DEA1004F141C /* AV_DemoUITests.m */,
+				3557CFE72237DEA1004F141C /* Info.plist */,
+			);
+			path = AV_DemoUITests;
+			sourceTree = "<group>";
+		};
+		3599E6A72244C07E005D4511 /* CCAVTools */ = {
+			isa = PBXGroup;
+			children = (
+				3599E6A82244C08B005D4511 /* CCAVCommand.h */,
+				3599E6A92244C08B005D4511 /* CCAVCommand.m */,
+				3599E6AB2244C3DC005D4511 /* CCAVTrimCommand.h */,
+				3599E6AC2244C3DC005D4511 /* CCAVTrimCommand.m */,
+				3599E6B022487255005D4511 /* CCAVCropCommand.h */,
+				3599E6B122487255005D4511 /* CCAVCropCommand.m */,
+				3599E6B32248AE3E005D4511 /* CCAVRotateCommand.h */,
+				3599E6B42248AE3E005D4511 /* CCAVRotateCommand.m */,
+				3599E6B62248B28B005D4511 /* CCAVAddMusicCommand.h */,
+				3599E6B72248B28B005D4511 /* CCAVAddMusicCommand.m */,
+				3599E6B92248B7D9005D4511 /* CCAVAddWaterMarkCommand.h */,
+				3599E6BA2248B7D9005D4511 /* CCAVAddWaterMarkCommand.m */,
+				3599E6BE2249D5EA005D4511 /* CCAVExportCommand.h */,
+				3599E6BF2249D5EA005D4511 /* CCAVExportCommand.m */,
+				3599E6C5224A0162005D4511 /* CCAVTool.h */,
+				3599E6C6224A0162005D4511 /* CCAVTool.m */,
+			);
+			path = CCAVTools;
+			sourceTree = "<group>";
+		};
+		3599E6C12249E7C7005D4511 /* RecordVC */ = {
+			isa = PBXGroup;
+			children = (
+				352535252240C27400AD0FD5 /* RecordBaseUIViewController.h */,
+				352535262240C27400AD0FD5 /* RecordBaseUIViewController.m */,
+				352535282240C28A00AD0FD5 /* RecordByFileOutputVC.h */,
+				352535292240C28A00AD0FD5 /* RecordByFileOutputVC.m */,
+				3525352B2240C67E00AD0FD5 /* RecordByAssetWriterVC.h */,
+				3525352C2240C67E00AD0FD5 /* RecordByAssetWriterVC.m */,
+			);
+			path = RecordVC;
+			sourceTree = "<group>";
+		};
+		3599E6C8224A05CF005D4511 /* SVProgressHUD+CCAdd */ = {
+			isa = PBXGroup;
+			children = (
+				3599E6CA224A05CF005D4511 /* SVProgressHUD+CCAdd.h */,
+				3599E6C9224A05CF005D4511 /* SVProgressHUD+CCAdd.m */,
+			);
+			path = "SVProgressHUD+CCAdd";
+			sourceTree = "<group>";
+		};
+		50B9310E6FC6494AE48034C8 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C757717EEC8988DA0407384F /* Pods-AV_Demo.debug.xcconfig */,
+				86A8312219C72F8751ECA39B /* Pods-AV_Demo.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		E7A73633FDB23C2826EC51DC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				91B7C41B0A9CD86E35C18787 /* libPods-AV_Demo.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		3557CFBD2237DE9F004F141C /* AV_Demo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3557CFEA2237DEA1004F141C /* Build configuration list for PBXNativeTarget "AV_Demo" */;
+			buildPhases = (
+				56E4B477F5DAADE8C5420C28 /* [CP] Check Pods Manifest.lock */,
+				3557CFBA2237DE9F004F141C /* Sources */,
+				3557CFBB2237DE9F004F141C /* Frameworks */,
+				3557CFBC2237DE9F004F141C /* Resources */,
+				4A0B41E0B2C54C49E68E4815 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AV_Demo;
+			productName = AV_Demo;
+			productReference = 3557CFBE2237DE9F004F141C /* AV_Demo.app */;
+			productType = "com.apple.product-type.application";
+		};
+		3557CFD52237DEA1004F141C /* AV_DemoTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3557CFED2237DEA1004F141C /* Build configuration list for PBXNativeTarget "AV_DemoTests" */;
+			buildPhases = (
+				3557CFD22237DEA1004F141C /* Sources */,
+				3557CFD32237DEA1004F141C /* Frameworks */,
+				3557CFD42237DEA1004F141C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3557CFD82237DEA1004F141C /* PBXTargetDependency */,
+			);
+			name = AV_DemoTests;
+			productName = AV_DemoTests;
+			productReference = 3557CFD62237DEA1004F141C /* AV_DemoTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		3557CFE02237DEA1004F141C /* AV_DemoUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3557CFF02237DEA1004F141C /* Build configuration list for PBXNativeTarget "AV_DemoUITests" */;
+			buildPhases = (
+				3557CFDD2237DEA1004F141C /* Sources */,
+				3557CFDE2237DEA1004F141C /* Frameworks */,
+				3557CFDF2237DEA1004F141C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3557CFE32237DEA1004F141C /* PBXTargetDependency */,
+			);
+			name = AV_DemoUITests;
+			productName = AV_DemoUITests;
+			productReference = 3557CFE12237DEA1004F141C /* AV_DemoUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		3557CFB62237DE9F004F141C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1010;
+				ORGANIZATIONNAME = chen;
+				TargetAttributes = {
+					3557CFBD2237DE9F004F141C = {
+						CreatedOnToolsVersion = 10.1;
+					};
+					3557CFD52237DEA1004F141C = {
+						CreatedOnToolsVersion = 10.1;
+						TestTargetID = 3557CFBD2237DE9F004F141C;
+					};
+					3557CFE02237DEA1004F141C = {
+						CreatedOnToolsVersion = 10.1;
+						TestTargetID = 3557CFBD2237DE9F004F141C;
+					};
+				};
+			};
+			buildConfigurationList = 3557CFB92237DE9F004F141C /* Build configuration list for PBXProject "AV_Demo" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 3557CFB52237DE9F004F141C;
+			productRefGroup = 3557CFBF2237DE9F004F141C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				3557CFBD2237DE9F004F141C /* AV_Demo */,
+				3557CFD52237DEA1004F141C /* AV_DemoTests */,
+				3557CFE02237DEA1004F141C /* AV_DemoUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		3557CFBC2237DE9F004F141C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3599E6AF2244E473005D4511 /* qq.mp4 in Resources */,
+				3557CFCE2237DEA1004F141C /* LaunchScreen.storyboard in Resources */,
+				3557CFCB2237DEA1004F141C /* Assets.xcassets in Resources */,
+				3525350E223B69FB00AD0FD5 /* 陈奕迅-单车.mp3 in Resources */,
+				351DE7D22238CF0C007C29EE /* music.wav in Resources */,
+				3599E6A6224498BB005D4511 /* 1553228080917688.mp4 in Resources */,
+				3557CFC92237DE9F004F141C /* Main.storyboard in Resources */,
+				351DE7D32238CF0C007C29EE /* Movie.m4v in Resources */,
+				3525350C223B69E700AD0FD5 /* 陶喆-寂寞的季节.mp4 in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3557CFD42237DEA1004F141C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3557CFDF2237DEA1004F141C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		4A0B41E0B2C54C49E68E4815 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-AV_Demo/Pods-AV_Demo-resources.sh",
+				"${PODS_ROOT}/GPUImage/framework/Resources/lookup.png",
+				"${PODS_ROOT}/GPUImage/framework/Resources/lookup_amatorka.png",
+				"${PODS_ROOT}/GPUImage/framework/Resources/lookup_miss_etikate.png",
+				"${PODS_ROOT}/GPUImage/framework/Resources/lookup_soft_elegance_1.png",
+				"${PODS_ROOT}/GPUImage/framework/Resources/lookup_soft_elegance_2.png",
+				"${PODS_ROOT}/SVProgressHUD/SVProgressHUD/SVProgressHUD.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/lookup.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/lookup_amatorka.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/lookup_miss_etikate.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/lookup_soft_elegance_1.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/lookup_soft_elegance_2.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SVProgressHUD.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-AV_Demo/Pods-AV_Demo-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		56E4B477F5DAADE8C5420C28 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-AV_Demo-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		3557CFBA2237DE9F004F141C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				35253518224090AE00AD0FD5 /* CCRecord.m in Sources */,
+				351DE7CE2238AFEF007C29EE /* CCPlayer.m in Sources */,
+				3525352D2240C67E00AD0FD5 /* RecordByAssetWriterVC.m in Sources */,
+				3599E6CB224A05CF005D4511 /* SVProgressHUD+CCAdd.m in Sources */,
+				3555D6012243A1B0006A1448 /* BaseCommon.m in Sources */,
+				3599E6B222487255005D4511 /* CCAVCropCommand.m in Sources */,
+				3525352A2240C28A00AD0FD5 /* RecordByFileOutputVC.m in Sources */,
+				3599E6C7224A0162005D4511 /* CCAVTool.m in Sources */,
+				352535302240DD7B00AD0FD5 /* CCRecordView.m in Sources */,
+				3557CFC62237DE9F004F141C /* ViewController.m in Sources */,
+				3557CFD12237DEA1004F141C /* main.m in Sources */,
+				3599E6AD2244C3DC005D4511 /* CCAVTrimCommand.m in Sources */,
+				3599E6BB2248B7D9005D4511 /* CCAVAddWaterMarkCommand.m in Sources */,
+				352535272240C27500AD0FD5 /* RecordBaseUIViewController.m in Sources */,
+				3557CFC32237DE9F004F141C /* AppDelegate.m in Sources */,
+				352535242240B42600AD0FD5 /* CCRecordAssetWriter.m in Sources */,
+				351DE7E12238E0E3007C29EE /* PlayerVC.m in Sources */,
+				351DE7EB2238E7CD007C29EE /* CCPlayerHeaderView.m in Sources */,
+				3599E6C02249D5EA005D4511 /* CCAVExportCommand.m in Sources */,
+				351DE7E42238E395007C29EE /* CCPlayerView.m in Sources */,
+				3599E6B52248AE3E005D4511 /* CCAVRotateCommand.m in Sources */,
+				3555D5FE224345D0006A1448 /* CCEditView.m in Sources */,
+				352535212240A90400AD0FD5 /* CCRecordFileOutput.m in Sources */,
+				3599E6AA2244C08B005D4511 /* CCAVCommand.m in Sources */,
+				3599E6B82248B28B005D4511 /* CCAVAddMusicCommand.m in Sources */,
+				3555D5FA2243272A006A1448 /* VideoEditVC.m in Sources */,
+				3599E6A42243CDDB005D4511 /* CCEditTrimView.m in Sources */,
+				352535382241024A00AD0FD5 /* MediaListVC.m in Sources */,
+				351DE7EE2238E7ED007C29EE /* CCPlayerFooterView.m in Sources */,
+				3525351B2240911E00AD0FD5 /* CCRecordTool.m in Sources */,
+				3599E6C42249E99F005D4511 /* CCAlterController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3557CFD22237DEA1004F141C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3557CFDB2237DEA1004F141C /* AV_DemoTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3557CFDD2237DEA1004F141C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3557CFE62237DEA1004F141C /* AV_DemoUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		3557CFD82237DEA1004F141C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3557CFBD2237DE9F004F141C /* AV_Demo */;
+			targetProxy = 3557CFD72237DEA1004F141C /* PBXContainerItemProxy */;
+		};
+		3557CFE32237DEA1004F141C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3557CFBD2237DE9F004F141C /* AV_Demo */;
+			targetProxy = 3557CFE22237DEA1004F141C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		3557CFC72237DE9F004F141C /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3557CFC82237DE9F004F141C /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		3557CFCC2237DEA1004F141C /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3557CFCD2237DEA1004F141C /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		3557CFE82237DEA1004F141C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		3557CFE92237DEA1004F141C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		3557CFEB2237DEA1004F141C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C757717EEC8988DA0407384F /* Pods-AV_Demo.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 96875C4W3L;
+				GCC_PREFIX_HEADER = /Users/chencheng/Desktop/Code/iOS/AV_Demo/AV_Demo/AV_Demo.pch;
+				INFOPLIST_FILE = AV_Demo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "cc.AV-Demo";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		3557CFEC2237DEA1004F141C /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 86A8312219C72F8751ECA39B /* Pods-AV_Demo.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 96875C4W3L;
+				GCC_PREFIX_HEADER = /Users/chencheng/Desktop/Code/iOS/AV_Demo/AV_Demo/AV_Demo.pch;
+				INFOPLIST_FILE = AV_Demo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "cc.AV-Demo";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		3557CFEE2237DEA1004F141C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = AV_DemoTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "cc.AV-DemoTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AV_Demo.app/AV_Demo";
+			};
+			name = Debug;
+		};
+		3557CFEF2237DEA1004F141C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = AV_DemoTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "cc.AV-DemoTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AV_Demo.app/AV_Demo";
+			};
+			name = Release;
+		};
+		3557CFF12237DEA1004F141C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = AV_DemoUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "cc.AV-DemoUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = AV_Demo;
+			};
+			name = Debug;
+		};
+		3557CFF22237DEA1004F141C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = AV_DemoUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "cc.AV-DemoUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = AV_Demo;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		3557CFB92237DE9F004F141C /* Build configuration list for PBXProject "AV_Demo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3557CFE82237DEA1004F141C /* Debug */,
+				3557CFE92237DEA1004F141C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3557CFEA2237DEA1004F141C /* Build configuration list for PBXNativeTarget "AV_Demo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3557CFEB2237DEA1004F141C /* Debug */,
+				3557CFEC2237DEA1004F141C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3557CFED2237DEA1004F141C /* Build configuration list for PBXNativeTarget "AV_DemoTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3557CFEE2237DEA1004F141C /* Debug */,
+				3557CFEF2237DEA1004F141C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3557CFF02237DEA1004F141C /* Build configuration list for PBXNativeTarget "AV_DemoUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3557CFF12237DEA1004F141C /* Debug */,
+				3557CFF22237DEA1004F141C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 3557CFB62237DE9F004F141C /* Project object */;
+}

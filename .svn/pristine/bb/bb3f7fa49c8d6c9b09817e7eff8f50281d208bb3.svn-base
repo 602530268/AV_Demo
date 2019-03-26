@@ -1,0 +1,20 @@
+//
+//  CCPlayerTools.h
+//  AV_Demo
+//
+//  Created by chencheng on 2019/3/18.
+//  Copyright © 2019年 chen. All rights reserved.
+//
+
+#import <Foundation/Foundation.h>
+
+NS_ASSUME_NONNULL_BEGIN
+
+@interface CCPlayerTools : NSObject
+
++ (int)convertToMinuteWith:(CGFloat)time;
+
++ (int)convertToSecondsWith:(CGFloat)time;
+@end
+
+NS_ASSUME_NONNULL_END

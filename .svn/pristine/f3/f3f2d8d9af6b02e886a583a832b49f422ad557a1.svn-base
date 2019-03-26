@@ -1,0 +1,160 @@
+//
+//  CCEditView.m
+//  AV_Demo
+//
+//  Created by chencheng on 2019/3/21.
+//  Copyright © 2019年 chen. All rights reserved.
+//
+
+#import "CCEditView.h"
+
+@interface CCEditView ()
+
+@property(nonatomic,strong) NSArray *titles;
+
+@end
+
+@implementation CCEditView
+
+- (instancetype)initWithFrame:(CGRect)frame {
+    if (self == [super initWithFrame:frame]) {
+        [self createUI];
+    }
+    return self;
+}
+
+- (void)createUI {
+    CGFloat smallItemSize = 44.f;
+    CGFloat mediumItmeSize = 50.f;
+    CGFloat bigItemSize = 80.f;
+    
+    _containerView = [[UIView alloc] init];
+    [self addSubview:_containerView];
+    [_containerView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(self);
+    }];
+    
+    _backBtn = [self generateBtnWithImageName:@"back" superView:self];
+    [_backBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self);
+        make.left.equalTo(self).offset(8.f);
+        make.width.height.equalTo(@(smallItemSize));
+    }];
+    
+    _functionView = [[UIView alloc] init];
+    [self addSubview:_functionView];
+    [_functionView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self);
+        make.right.equalTo(self).offset(-8.f);
+//        make.width.equalTo(@(smallItemSize));
+        make.width.height.greaterThanOrEqualTo(@0);
+    }];
+    
+    self.titles = @[@"trim",@"crop",@"add music",@"water mark",@"export"];
+    UIView *previousView = nil;
+    for (int i = 0; i < self.titles.count; i++) {
+        NSString *title = self.titles[i];
+        UIButton *btn = [self generateBtnWithTitle:title superView:self.functionView];
+        btn.tag = 1000 + i;
+        [btn mas_makeConstraints:^(MASConstraintMaker *make) {
+            if (previousView == nil) {
+                make.top.equalTo(self.functionView);
+            }else {
+                make.top.equalTo(previousView.mas_bottom).offset(8.f);
+            }
+            if (i == self.titles.count - 1) {
+                make.bottom.equalTo(self.functionView);
+            }
+            make.left.right.equalTo(self.functionView);
+        }];
+        previousView = btn;
+    }
+    
+    _playBtn = [self generateBtnWithImageName:nil superView:self];
+    CGFloat recordBtnSize = bigItemSize;
+    _playBtn.layer.cornerRadius = recordBtnSize / 2.f;
+    _playBtn.layer.borderColor = [UIColor blackColor].CGColor;
+    _playBtn.layer.borderWidth = 3.f;
+    [_playBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.equalTo(self);
+        make.width.height.equalTo(@(recordBtnSize));
+        make.bottom.equalTo(self).offset(-80.f);
+    }];
+    
+    _rollbackBtn = [self generateBtnWithImageName:@"rollback" superView:self];
+    [_rollbackBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.equalTo(self.playBtn.mas_left).offset(-40.f);
+        make.centerY.equalTo(self.playBtn);
+        make.width.height.equalTo(@(mediumItmeSize));
+    }];
+    
+    _finishBtn = [self generateBtnWithImageName:@"finish" superView:self];
+    [_finishBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.playBtn.mas_right).offset(40.f);
+        make.centerY.equalTo(self.playBtn);
+        make.width.height.equalTo(@(mediumItmeSize));
+    }];
+    
+    [self controlsEvent];
+    self.functionView.backgroundColor = [UIColor lightGrayColor];
+}
+
+- (void)controlsEvent {
+    __weak typeof(self) weakSelf = self;
+    
+    [[self.backBtn rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+        if (weakSelf.backBtnEventBlock) weakSelf.backBtnEventBlock();
+    }];
+    [[self.rollbackBtn rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+        if (self.rollbackBtnEventBlock) self.rollbackBtnEventBlock();
+    }];
+    [[self.playBtn rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+        if (self.playBtnEventBlock) self.playBtnEventBlock();
+    }];
+    [[self.finishBtn rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+        if (self.finishBtnEventBlock) self.finishBtnEventBlock();
+    }];
+    
+    for (int i = 0; i < self.functionView.subviews.count; i++) {
+        UIButton *btn = self.functionView.subviews[i];
+        NSUInteger tag = btn.tag;
+        switch (tag) {
+            case 1000:
+                if (self.trimBtnEventBlock) self.trimBtnEventBlock();
+                break;
+            case 1001:
+                if (self.cropBtnEventBlock) self.cropBtnEventBlock();
+                break;
+            case 1002:
+                if (self.addMusicBtnEventBlock) self.addMusicBtnEventBlock();
+                break;
+            case 1003:
+                if (self.waterMarkBtnEventBlock) self.waterMarkBtnEventBlock();
+                break;
+            case 1004:
+                if (self.exportBtnEventBlock) self.exportBtnEventBlock();
+                break;
+            default:
+                break;
+        }
+    }
+}
+
+- (UIButton *)generateBtnWithImageName:(NSString *)imageName superView:(UIView *)superView {
+    UIButton *btn = [[UIButton alloc] init];
+    if (imageName) {
+        [btn setImage:[UIImage imageNamed:imageName] forState:UIControlStateNormal];
+    }
+    [superView addSubview:btn];
+    return btn;
+}
+
+- (UIButton *)generateBtnWithTitle:(NSString *)title superView:(UIView *)superView {
+    UIButton *btn = [[UIButton alloc] init];
+    [btn setTitle:title forState:UIControlStateNormal];
+    [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [superView addSubview:btn];
+    return btn;
+}
+
+@end

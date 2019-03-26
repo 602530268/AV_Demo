@@ -1,0 +1,22 @@
+//
+//  CCPlayerTools.m
+//  AV_Demo
+//
+//  Created by chencheng on 2019/3/18.
+//  Copyright © 2019年 chen. All rights reserved.
+//
+
+#import "CCPlayerTools.h"
+
+@implementation CCPlayerTools
+
++ (int)convertToMinuteWith:(CGFloat)time {
+    return time / 60;
+}
+
++ (int)convertToSecondsWith:(CGFloat)time {
+    int seconds = (int)time;
+    return seconds % 60;
+}
+
+@end

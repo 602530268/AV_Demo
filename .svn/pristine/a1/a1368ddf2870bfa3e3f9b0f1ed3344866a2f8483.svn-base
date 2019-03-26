@@ -1,0 +1,336 @@
+//
+//  CCRecord.m
+//  AV_Demo
+//
+//  Created by chencheng on 2019/3/19.
+//  Copyright © 2019年 chen. All rights reserved.
+//
+
+#import "CCRecord.h"
+#import "CCRecordTool.h"
+
+static NSString const* kSavePath = @"Documents/cc_save_videos";
+static NSString const* kTmpPath = @"Documents/cc_tmp_videos";
+
+@interface CCRecord ()
+
+@property(nonatomic,strong) AVCaptureDeviceInput *rearCameraInput; //后置摄像头
+@property(nonatomic,strong) AVCaptureDeviceInput *frontCameraInput; //前置摄像头
+
+@end
+
+@implementation CCRecord
+
+- (instancetype)initWithContainerView:(UIView *)containerView {
+    return [self initWithURL:[self availableFileURLToSave] containerView:containerView];
+}
+
+- (instancetype)initWithPath:(NSString *)path containerView:(UIView *)containerView {
+    return [self initWithURL:[NSURL fileURLWithPath:path] containerView:containerView];
+}
+
+- (instancetype)initWithURL:(NSURL *)url containerView:(UIView *)containerView {
+    if (self = [super init]) {
+        _fileURL = url;
+        _type = CCRecordTypeVideo;
+        _cameraInput = CCCameraInputRear;
+        self.containerView = containerView;
+    }
+    return self;
+}
+
+#pragma mark - Record
+- (void)startRunning {
+    [self.session startRunning];
+}
+
+- (void)stopRunning {
+    [self.session stopRunning];
+}
+
+#pragma mark - Recording
+- (void)startRecording {}
+- (void)stopRecording {}
+- (void)pauseRecording {}
+
+- (void)finishRecording {
+    self.status = CCRecordStatusFinish;
+    
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    if ([fileManager fileExistsAtPath:self.fileURL.path]) {
+        if (self.stopRecordBlock) self.stopRecordBlock(self.fileURL);
+        NSLog(@"视频录制文件已存在: %@",self.fileURL.path);
+        return;
+    }
+    NSLog(@"videoArr: %@",self.videoArr);
+    [CCRecordTool videoCompositionWith:self.videoArr
+                             outputURL:self.fileURL
+                               success:^(NSURL *url) {
+                                   NSLog(@"视音频录制完成: %@",url.path);
+                                   if (self.stopRecordBlock) self.stopRecordBlock(url);
+                                   [self cancelRecord];
+                               } fail:^(NSString *error) {
+                                   NSLog(@"视音频录制失败: %@",error);
+                                   [self cancelRecord];
+                               }];
+}
+
+#pragma mark - Add Device Input
+- (void)addDeviceInput:(AVCaptureInput *)input {
+    if ([self.session canAddInput:input]) {
+        [self.session addInput:input];
+    }
+}
+
+- (void)addDeviceOutput:(AVCaptureOutput *)output {
+    if ([self.session canAddOutput:output]) {
+        [self.session addOutput:output];
+    }
+}
+
+#pragma mark - Other
+- (NSURL *)availableFileURLToSave {
+    NSString *filePath = [NSString stringWithFormat:@"%@/%@",NSHomeDirectory(),kSavePath];
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    if (![fileManager fileExistsAtPath:filePath]) {
+        [fileManager createDirectoryAtPath:filePath withIntermediateDirectories:YES attributes:nil error:nil];
+    }
+    
+    static NSString *tmpFileName = @"video_";
+    NSUInteger now = (NSUInteger)([[NSDate date] timeIntervalSince1970] * 1000);
+    NSString *path = [NSString stringWithFormat:@"%@/%@/%@%lu.mp4",NSHomeDirectory(),kSavePath,tmpFileName,now];
+    return [NSURL fileURLWithPath:path];
+}
+
+- (NSURL *)availableFileURLToTmp {
+    NSString *filePath = [NSString stringWithFormat:@"%@/Documents/%@",NSHomeDirectory(),kTmpPath];
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    if (![fileManager fileExistsAtPath:filePath]) {
+        [fileManager createDirectoryAtPath:filePath withIntermediateDirectories:YES attributes:nil error:nil];
+    }
+    
+    NSString *path = [NSString stringWithFormat:@"%@/Documents/%@/video_tmp_%lu.mp4",NSHomeDirectory(),kTmpPath,(unsigned long)self.videoArr.count];
+    return [NSURL fileURLWithPath:path];
+}
+
+- (void)cancelRecord {
+    NSLog(@"取消录制，删除临时存储的视音频文件");
+    [self.videoArr removeAllObjects];
+    self.videoArr = @[].mutableCopy;
+    self.fileURL = nil;
+    
+    NSString *path = [NSString stringWithFormat:@"%@/Documents/%@",NSHomeDirectory(),kTmpPath];
+    NSError *error = nil;
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    [fileManager removeItemAtPath:path error:&error];
+    if (error) {
+        NSLog(@"删除失败: %@",error.localizedDescription);
+    }
+//    @synchronized (self) {
+//    }
+}
+
+//开始写入前需要判断路径是否存在，路径已存在其他文件的话是无法写入的
+- (void)removeFilePathIfExist:(NSString *)path {
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    if ([fileManager fileExistsAtPath:path]) {
+        NSError *error = nil;
+        [fileManager removeItemAtPath:path error:&error];
+        if (error) {
+            NSLog(@"文件存在且删除失败: %@",error.localizedDescription);
+        }
+    }
+}
+
++ (NSArray *)mediaList {
+    NSString *path = [NSString stringWithFormat:@"%@/%@",NSHomeDirectory(),kSavePath];
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    NSLog(@"%@",[fileManager subpathsAtPath:path]);
+    NSArray *files = [fileManager subpathsAtPath:path];
+    if (files.count == 0) return nil;
+    NSMutableArray *paths = @[].mutableCopy;
+    for (NSString *file in files) {
+        [paths addObject:[NSString stringWithFormat:@"%@/%@",path,file]];
+    }
+    return paths;
+}
+
++ (void)removeAllMedia {
+    NSString *path = [NSString stringWithFormat:@"%@/%@",NSHomeDirectory(),kSavePath];
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    if (![fileManager fileExistsAtPath:path]) return;
+    [fileManager removeItemAtPath:path error:nil];
+}
+
+#pragma mark - Tools
+- (void)switchFlashLightModel:(AVCaptureTorchMode)mode {
+    if (!_videoInput) return;
+    
+    //前置摄像头没有闪光灯
+    if ([self.videoInput.device hasTorch]) {
+        [self.videoInput.device lockForConfiguration:nil];
+        [self.videoInput.device setTorchMode:mode];
+        [self.videoInput.device unlockForConfiguration];
+    }
+}
+
+- (void)swithCamera {
+    if ((self.type & CCRecordTypeVideo) == 0) return;
+    
+    BOOL sessionRunning = self.session.isRunning;
+    if (sessionRunning) {
+        [self.session stopRunning]; //切换过程中停止采集
+    }
+    
+    AVCaptureDeviceInput *oldInput = nil;
+    if ([self.session.inputs containsObject:_rearCameraInput]) {
+        oldInput = _rearCameraInput;
+        self.cameraInput = CCCameraInputFront;
+        self.videoInput = self.frontCameraInput;
+    }else if ([self.session.inputs containsObject:_frontCameraInput]) {
+        oldInput = _frontCameraInput;
+        self.cameraInput = CCCameraInputRear;
+        self.videoInput = self.rearCameraInput;
+    }
+    if (!oldInput && !self.videoInput) {
+        NSLog(@"没有设置摄像头，无法切换");
+        return;
+    }
+    
+    //在session中切换input
+    [self.session beginConfiguration];
+    [self.session removeInput:oldInput];
+    [self.session addInput: self.videoInput];
+    [self.session commitConfiguration];
+    
+    if (sessionRunning) {
+        [self.session startRunning];
+    }
+}
+
+#pragma mark - Setter/Getter
+- (void)setContainerView:(UIView *)containerView {
+    _containerView = containerView;
+    if (_previewLayer) {
+        [_previewLayer removeFromSuperlayer];
+        _previewLayer = nil;
+    }
+    [_containerView.superview layoutIfNeeded];
+    self.previewLayer.frame = _containerView.bounds;
+    [_containerView.layer addSublayer:self.previewLayer];
+}
+
+#pragma mark - Lazy load
+- (AVCaptureSession *)session {
+    if (!_session) {
+        _session = [[AVCaptureSession alloc] init];
+        /*
+         sessionPreset:
+         AVCaptureSessionPresetHigh: 高分辨率, 最终效果根据设备不同有所差异
+         AVCaptureSessionPresetMedium: 中等分辨率, 适合Wi-Fi分享. 最终效果根据设备不同有所差异
+         AVCaptureSessionPresetLow: 低分辨率, 适合3G分享, 最终效果根据设备不同有所差异
+         AVCaptureSessionPreset640x480: 640x480, VGA
+         AVCaptureSessionPreset1280x720: 1280x720, 720p HD
+         AVCaptureSessionPresetPhoto: 全屏照片, 不能用来作为输出视频
+         */
+        if (![_session canSetSessionPreset:AVCaptureSessionPresetMedium]) {
+            _session.sessionPreset = AVCaptureSessionPresetMedium;  //默认高画质
+        }
+    }
+    return _session;
+}
+
+- (AVCaptureDeviceInput *)videoInput {
+    if (!_videoInput) {
+        if (_cameraInput == CCCameraInputRear) {
+            _videoInput = self.rearCameraInput;
+        }else {
+            _videoInput = self.frontCameraInput;
+        }
+    }
+    return _videoInput;
+}
+
+- (AVCaptureDeviceInput *)audioInput {
+    if (!_audioInput) {
+        NSError *error = nil;
+        AVCaptureDevice *mic = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeAudio];
+        _audioInput = [AVCaptureDeviceInput deviceInputWithDevice:mic error:&error];
+        if (error) {
+            NSLog(@"获取麦克风失败 %@: %@",_audioInput,error.localizedDescription);
+        }
+    }
+    return _audioInput;
+}
+
+//视频采集过程中的预览view
+- (AVCaptureVideoPreviewLayer *)previewLayer {
+    if (!_previewLayer) {
+        _previewLayer = [[AVCaptureVideoPreviewLayer alloc] initWithSession:self.session];
+        _previewLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
+    }
+    return _previewLayer;
+}
+
+//后置摄像头
+- (AVCaptureDeviceInput *)rearCameraInput {
+    if (!_rearCameraInput) {
+        NSError *error = nil;
+        AVCaptureDevice *rearCamera = [self obtainCameraWith:AVCaptureDevicePositionBack];
+        _rearCameraInput = [[AVCaptureDeviceInput alloc] initWithDevice:rearCamera error:&error];
+        if (error) {
+            NSLog(@"获取后置摄像头失败 %@: %@",_rearCameraInput,error.localizedDescription);
+        }
+    }
+    return _rearCameraInput;
+}
+
+//前置摄像头
+- (AVCaptureDeviceInput *)frontCameraInput {
+    if (!_frontCameraInput) {
+        NSError *error = nil;
+        AVCaptureDevice *frontCamera = [self obtainCameraWith:AVCaptureDevicePositionFront];
+        _frontCameraInput = [[AVCaptureDeviceInput alloc] initWithDevice:frontCamera error:&error];
+        if (error) {
+            NSLog(@"获取前置摄像头失败 %@: %@",_frontCameraInput,error.localizedRecoverySuggestion);
+        }
+    }
+    return _frontCameraInput;
+}
+
+- (NSURL *)fileURL {
+    if (!_fileURL) {
+        //默认放到tmp文件夹内，注意系统的自动清理功能
+        NSTimeInterval current = [[NSDate date] timeIntervalSince1970];
+        NSString *path = [NSString stringWithFormat:@"%@/%ld.mp4",NSTemporaryDirectory(),(NSInteger)current];
+        _fileURL = [NSURL fileURLWithPath:path];
+    }
+    return _fileURL;
+}
+
+- (NSMutableArray *)videoArr {
+    if (!_videoArr) {
+        _videoArr = @[].mutableCopy;
+    }
+    return _videoArr;
+}
+
+#pragma mark - APIs (private)
+- (AVCaptureDevice *)obtainCameraWith:(AVCaptureDevicePosition)positoin {
+    
+#if __IPHONE_10_0
+    AVCaptureDeviceDiscoverySession *discoverySession = [AVCaptureDeviceDiscoverySession discoverySessionWithDeviceTypes:@[AVCaptureDeviceTypeBuiltInWideAngleCamera] mediaType:AVMediaTypeVideo position:positoin];
+    NSArray *devices = discoverySession.devices;
+#else
+    NSArray *devices = [AVCaptureDevice devicesWithMediaType:AVMediaTypeVideo];
+#endif
+    
+    for (AVCaptureDevice *device in devices) {
+        if (device.position == positoin) {
+            return device;
+        }
+    }
+    return nil;
+}
+
+@end
